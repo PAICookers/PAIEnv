@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "paienv"
+version = "0.1.0"
+description = "Environment for CI/CD"
+authors = ["KafCoppelia <k740677208@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+include = ["./paienv"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+paitest = {git = "git@github.com:PAICookers/PAITest.git"}
+
+
+[[tool.poetry.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = false
+secondary = false
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
