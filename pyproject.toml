@@ -1,15 +1,18 @@
 [tool.poetry]
 name = "paienv"
-version = "0.1.0"
+version = "0.0.1"
 description = "Environment for CI/CD"
 authors = ["KafCoppelia <k740677208@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/PAICookers/PAIEnv"
+homepage = "https://github.com/PAICookers/PAIEnv"
+documentation = "https://github.com/PAICookers/PAIEnv#readme"
 include = ["./paienv"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-paitest = {git = "git@github.com:PAICookers/PAITest.git"}
+paitest = {git = "git@github.com:PAICookers/PAITest.git", branch = "dev"}
 
 
 [[tool.poetry.source]]
