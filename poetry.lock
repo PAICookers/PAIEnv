@@ -2,7 +2,7 @@
 
 [[package]]
 name = "paitest"
-version = "0.0.9"
+version = "0.0.10"
 description = "Test module for PAICORE 2.0"
 category = "main"
 optional = false
@@ -14,7 +14,7 @@ develop = false
 type = "git"
 url = "git@github.com:PAICookers/PAITest.git"
 reference = "dev"
-resolved_reference = "d7d7efc0546320a93fe20d799d5fe7855743191d"
+resolved_reference = "97c29592b7605186c80177f23cdf08c26cc19893"
 
 [metadata]
 lock-version = "2.0"
