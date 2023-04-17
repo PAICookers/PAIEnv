@@ -6,7 +6,7 @@ version = "0.0.10"
 description = "Test module for PAICORE 2.0"
 category = "main"
 optional = false
-python-versions = "^3.8"
+python-versions = "^3.6"
 files = []
 develop = false
 
@@ -14,9 +14,9 @@ develop = false
 type = "git"
 url = "git@github.com:PAICookers/PAITest.git"
 reference = "dev"
-resolved_reference = "97c29592b7605186c80177f23cdf08c26cc19893"
+resolved_reference = "db72cb9da83b206ad3a70ca449c2383d369eac13"
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.9"
-content-hash = "8db0aa01ed6953a9b00c7cdd4c25d56e0ec900b0ddb0f66612e2f73eb915edb6"
+python-versions = "^3.6"
+content-hash = "c57211286795505a605f48c02534327d381614e5c701c0bb3dc839045416d333"

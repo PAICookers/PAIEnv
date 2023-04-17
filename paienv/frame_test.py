@@ -68,6 +68,17 @@ class CoordAttrTestCase(unittest.TestCase):
                     else:
                         coord_tuple = (i, j)
                         a = Coord(coord_tuple)
+        
+        with self.assertRaises(ValueError):
+            a = Coord([1, 2])
+        
+        with self.assertRaises(ValueError):
+            a = Coord((1, 2), 2)
+        
+        with self.assertRaises(ValueError):
+            a = Coord(1)
+        
+        a = Coord((1, 2))
 
     def test_CoordOffset_init_assertion(self):
         for i in range(-32, 32):
@@ -113,6 +124,7 @@ class CoordAttrTestCase(unittest.TestCase):
         self.assertGreaterEqual(coords[1], coord_std)
         self.assertGreaterEqual(coords[2], coord_std)
         self.assertEqual(coords[3], coord_std)
+        self.assertEqual(coords[3], (16, 16))
         self.assertLessEqual(coords[4], coord_std)
         self.assertLessEqual(coords[5], coord_std)
         self.assertLess(coords[6], coord_std)

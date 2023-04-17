@@ -11,7 +11,7 @@ documentation = "https://github.com/PAICookers/PAIEnv#readme"
 include = ["./paienv"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.6"
 paitest = {git = "git@github.com:PAICookers/PAITest.git", branch = "dev"}
 
 
