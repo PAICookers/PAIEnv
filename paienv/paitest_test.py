@@ -3,7 +3,7 @@ import random
 import string
 from paitest import paitest
 from paitest.frames import FrameDecoder
-from frame_test import random_gen_core_coord, Coord
+from frame_test import random_gen_core_coord
 
 
 class InitTestCase(unittest.TestCase):
@@ -38,7 +38,7 @@ class InitTestCase(unittest.TestCase):
 
 class PAITestTestCase(unittest.TestCase):
     def setUp(self) -> None:
-        self.paitest = paitest("EAST")
+        self.paitest = paitest("SOUTH", (0, 0), test_chip_coord=(0, 1))
         self.decoder = FrameDecoder()
         return super().setUp()
 
@@ -51,7 +51,7 @@ class PAITestTestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             N = 1009
             _ = self.paitest.Get1GroupForNCoresWith1Param(N, save_dir="./test")
-    
+
     def test_func_Get1GroupForNCoresWithNParams_cores_illegal_range(self) -> None:
         """Test number of cores > 1008"""
         N = 1008
@@ -61,7 +61,7 @@ class PAITestTestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             N = 1009
             _ = self.paitest.Get1GroupForNCoresWithNParams(N, save_dir="./test")
-            
+
     def test_func_GetNGroupsFor1CoreWithNParams_cores_illegal_range(self) -> None:
         """Test number of cores > 1008"""
         N = 1008
@@ -71,13 +71,17 @@ class PAITestTestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             N = 1009
             _ = self.paitest.GetNGroupsFor1CoreWithNParams(N, save_dir="./test")
-            
+
     def test_func_ReplaceCoreCoord_cores_illegal_range(self) -> None:
-        in_frame = random.randint(0, 2**64-1)
+        in_frame = random.randint(0, 2**64 - 1)
         a = self.paitest.ReplaceCoreCoord(in_frame, (21, 21))
         self.assertIsInstance(a, int)
-        
-        in_frame_list = [random.randint(0, 2**64-1), random.randint(0, 2**64-1), random.randint(0, 2**64-1)]
+
+        in_frame_list = [
+            random.randint(0, 2**64 - 1),
+            random.randint(0, 2**64 - 1),
+            random.randint(0, 2**64 - 1),
+        ]
         b = self.paitest.ReplaceCoreCoord(in_frame_list, (21, 21))
         self.assertIsInstance(b, tuple)
 
@@ -152,7 +156,7 @@ class PAITestTestCase(unittest.TestCase):
 
             attr = self.decoder.decode(a[0][:3])
             self.assertNotEqual(attr.get("core_coord"), masked_core_coord)
-    
+
     def test_func_GetNGroupsFor1CoreWithNParams_is_core_masked(self) -> None:
         # 1. Test N > 1007
         N = 1009
@@ -186,7 +190,7 @@ class PAITestTestCase(unittest.TestCase):
 
             attr = self.decoder.decode(a[0][:3])
             self.assertNotEqual(attr.get("core_coord"), masked_core_coord)
-            
+
     def test_func_ReplaceCoreCoord_is_core_replaced(self) -> None:
         # Generate frames
         masked_core_coords = random_gen_core_coord(100)
@@ -196,15 +200,16 @@ class PAITestTestCase(unittest.TestCase):
             N,
             masked_core_coord=(masked_core_coord.x, masked_core_coord.y),
         )
-        
+
         # Replace
         for i in range(100):
-            cf_replaced = self.paitest.ReplaceCoreCoord(cf, (masked_core_coord.x, masked_core_coord.y))
-        
+            cf_replaced = self.paitest.ReplaceCoreCoord(
+                cf, (masked_core_coord.x, masked_core_coord.y)
+            )
+
             # Decode
             attr = self.decoder.decode(cf_replaced[:3])
             self.assertEqual(attr.get("core_coord"), masked_core_coord)
-
 
     def tearDown(self) -> None:
         return super().tearDown()

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "paienv"
-version = "0.0.9"
+version = "0.0.10"
 description = "Environment for CI/CD"
 authors = ["KafCoppelia <k740677208@gmail.com>"]
 license = "MIT"
@@ -18,8 +18,7 @@ paitest = {git = "git@github.com:PAICookers/PAITest.git", branch = "dev"}
 [[tool.poetry.source]]
 name = "tsinghua"
 url = "https://pypi.tuna.tsinghua.edu.cn/simple"
-default = false
-secondary = false
+priority = "primary"
 
 [build-system]
 requires = ["poetry-core"]
